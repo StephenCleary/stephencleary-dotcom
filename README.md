@@ -1,2 +1,1 @@
-stephencleary-dotcom
-====================
+The website at http://stephencleary.com/

@@ -1,0 +1,214 @@
+﻿@{
+    ViewBag.Title = "Stephen Cleary \"dot com\"";
+}
+
+<div data-role="page" id="index" data-title="@ViewBag.Title">
+    <div data-role="header">
+        <h1>@ViewBag.Title</h1>
+    </div>
+	<div data-role="content">
+        <div>
+            <div style="float:left;"><img src="~/Content/images/avatar.128.jpg" /></div>
+            <div style="float:right;"><img src="~/Content/images/trythis.128.jpg" /></div>
+            <div style="text-align:center;">
+                <p>I am Stephen Cleary, a Christian, husband, father, and programmer living in Northern Michigan.</p>
+                <p>This site is a collection of my articles and projects, which I hope you find useful!</p>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+        <div data-role="controlgroup">
+		    <a href="http://nitoprograms.com/" data-role="button">Blog</a>
+		    <a href="#libraries" data-role="button">Open-source libraries and projects</a>
+            <a href="#publications" data-role="button">Publications</a>
+            <a href="#accounts" data-role="button">Online accounts</a>
+		    <a href="http://picasaweb.google.com/stephenandmandy" data-role="button">Family pictures</a>
+            <a href="#" data-role="button" id="email">Email</a>
+            <!-- TODO: Presentations -->
+        </a>
+	</div>
+</div>
+
+<div data-role="page" id="accounts" data-title="Online accounts">
+    <div data-role="header">
+		<a href="#index" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+        <h2>Online accounts</h2>
+    </div>
+	<div data-role="content">
+        <div data-role="controlgroup">
+            <a href="http://stackoverflow.com/users/263693/stephen-cleary" data-role="button">Stack Overflow</a>
+            <a href="http://social.msdn.microsoft.com/Forums/en-US/user/threads?user=Stephen%20Cleary" data-role="button">MSDN Forums</a>
+            <a href="http://www.codeplex.com/site/users/view/StephenCleary" data-role="button">CodePlex</a>
+        </div>
+	</div>
+</div>
+
+<div data-role="page" id="publications" data-title="Publications">
+    <div data-role="header">
+		<a href="#index" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+        <h2>Publications</h2>
+    </div>
+	<div data-role="content">
+        <ul data-role="listview">
+            <li data-role="list-divider">Trade journals</li>
+	        <li><a href="http://msdn.microsoft.com/en-us/magazine/gg598924.aspx">
+                <h2>It's All About the SynchronizationContext</h2>
+                <p class="notruncate">A thorough look at the <span class="csharp"><span class="type">SynchronizationContext</span></span> type, starting with some history and concluding with how it is used by various components (including components in development such as the <span class="csharp"><span class="keyword">async</span>/<span class="keyword">await</span></span> compiler support).</p>
+                <p class="ui-li-aside">MSDN Magazine, February 2011</p>
+	        </a></li>
+	        <li><a href="http://www.boost.org/doc/libs/1_43_0/libs/type_traits/doc/html/boost_typetraits/background.html">
+                <h2>C++ Type Traits</h2>
+                <p class="notruncate">A brief description of the Boost.TypeTraits library, which uses advanced templates to determine (and manipulate) type properties at compile-time. This was the first article on template metaprogramming; the Type Traits library provided the groundwork for more advanced template metaprogramming. I co-authored this article with John Maddock.</p>
+                <p class="ui-li-aside">Dr. Dobb's Journal, October 2000</p>
+            </a></li>
+            <li data-role="list-divider">Online</li>
+	        <li><a href="http://nitoprograms.blogspot.com/2012/02/async-and-await.html">
+                <h2>Async and Await</h2>
+                <p class="notruncate">An introduction to <span class="csharp"><span class="keyword">async</span></span> and <span class="csharp"><span class="keyword">await</span></span>.</p>
+                <p class="ui-li-aside">Blog</p>
+            </a></li>
+	        <li><a href="http://nitoprograms.blogspot.com/2009/04/tcpip-net-sockets-faq.html">
+                <h2>TCP/IP .NET Sockets FAQ</h2>
+                <p class="notruncate">How to use TCP/IP sockets from .NET (correctly). I've gotten a lot of thankful responses on the <i>Message framing</i> and <i>Detection of half-open connections</i> sections in particular.</p>
+                <p class="ui-li-aside">Blog</p>
+            </a></li>
+	        <li><a href="http://nitoprograms.blogspot.com/2009/08/how-to-implement-idisposable-and.html">
+                <h2>Implementing IDisposable and Finalizers</h2>
+                <p class="notruncate">Three simple rules for <span class="csharp"><span class="type">IDisposable</span></span> and finalizers. These rules are derived from my background in reliable programming, and are far simpler than the "dispose pattern" officially recommended by Microsoft.</p>
+                <p class="ui-li-aside">Blog</p>
+            </a></li>
+	        <li><a href="http://www.codeproject.com/Articles/29534/IDisposable-What-Your-Mother-Never-Told-You-About">
+                <h2>IDisposable: What Your Mother Never Told You about Resource Deallocation</h2>
+                <p class="notruncate">An early article discussing some of the problems around nondeterministic resource deallocation and <span class="csharp"><span class="type">IDisposable</span></span>. I was still quite new to .NET at the time.</p>
+                <p class="ui-li-aside">Code Project</p>
+            </a></li>
+        </ul>
+	</div>
+</div>
+
+<div data-role="page" id="libraries" data-title="Libraries">
+    <div data-role="header">
+		<a href="#index" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+        <h2>Open-source libraries and projects</h2>
+    </div>
+	<div data-role="content">
+        <ul data-role="listview">
+	        <li><a href="#libraries_ConnectedProperties">
+                <h2>Connected Properties</h2>
+                <p>Dynamically add properties to (almost) any object instance.</p>
+	        </a></li>
+	        <li><a href="#libraries_AsyncEx">
+                <h2>AsyncEx</h2>
+                <p>Helper types for using <span class="csharp"><span class="keyword">async</span></span> and <span class="csharp"><span class="keyword">await</span></span>.</p>
+            </a></li>
+	        <li><a href="#libraries_Comparers">
+                <h2>Comparers</h2>
+                <p></p>
+            </a></li>
+	        <li><a href="#libraries_ArraySegments">
+                <h2>ArraySegments</h2>
+                <p></p>
+            </a></li>
+        </ul>
+	</div>
+</div>
+
+<div data-role="page" id="libraries_ArraySegments" data-title="ArraySegments">
+    <div data-role="header">
+		<a href="#index" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+        <h2>ArraySegments</h2>
+    </div>
+	<div data-role="content">
+        <div data-role="controlgroup">
+            <a href="http://arraysegments.codeplex.com/" data-role="button">Project page (CodePlex)</a>
+            <a href="https://nuget.org/packages/Nito.ArraySegments" data-role="button">NuGet package</a>
+            <a href="http://arraysegments.codeplex.com/documentation" data-role="button">Documentation (CodePlex)</a>
+            <a href="http://arraysegments.codeplex.com/discussions" data-role="button">Forum (CodePlex)</a>
+            <a href="http://arraysegments.codeplex.com/workitem/list/basic" data-role="button">Issue tracker (CodePlex)</a>
+            <a href="http://arraysegments.codeplex.com/SourceControl/BrowseLatest" data-role="button">Browse source code (CodePlex)</a>
+        </div>
+	</div>
+</div>
+
+<div data-role="page" id="libraries_Comparers" data-title="Comparers">
+    <div data-role="header">
+		<a href="#index" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+        <h2>Comparers</h2>
+    </div>
+	<div data-role="content">
+        <div data-role="controlgroup">
+            <a href="http://comparers.codeplex.com/" data-role="button">Project page (CodePlex)</a>
+            <a href="http://nuget.org/packages/Comparers" data-role="button">NuGet package</a>
+            <a href="http://comparers.codeplex.com/documentation" data-role="button">Documentation (CodePlex)</a>
+            <a href="http://comparers.codeplex.com/discussions" data-role="button">Forum (CodePlex)</a>
+            <a href="http://comparers.codeplex.com/workitem/list/basic" data-role="button">Issue tracker (CodePlex)</a>
+            <a href="http://comparers.codeplex.com/SourceControl/BrowseLatest" data-role="button">Browse source code (CodePlex)</a>
+        </div>
+	</div>
+</div>
+
+<div data-role="page" id="libraries_ConnectedProperties" data-title="Connected Properties">
+    <div data-role="header">
+		<a href="#index" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+        <h2>Connected Properties</h2>
+    </div>
+	<div data-role="content">
+        <div>
+            <p>Connected Properties allow you to dynamically attach properties to any reference type that uses reference equality.</p>
+            <p>The connected properties have lifetimes exactly like regular properties (even if they reference their carrier object). A connected property is a true <a href="http://en.wikipedia.org/wiki/Ephemeron">ephemeron</a>.</p>
+            <pre class="csharp">
+<span class="comment">// Use the Connected Properties library.</span>
+<span class="keyword">using</span> Nito.ConnectedProperties;
+<span class="keyword">using</span> Nito.ConnectedProperties.Named;
+
+<span class="keyword">class</span> Program
+{
+  <span class="comment">// Display the Name of any object passed into this method.</span>
+  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> DisplayName(<span class="keyword">object</span> obj)
+  {
+    <span class="comment">// Look up a connected property called &quot;Name&quot;.</span>
+    <span class="keyword">var</span> nameProperty = obj.GetConnectedProperty(<span class="string">&quot;Name&quot;</span>);
+    <span class="type">Console</span>.WriteLine(<span class="string">&quot;Name: &quot;</span> + nameProperty.Get());
+  }
+
+  <span class="keyword">static</span> <span class="keyword">void</span> Main()
+  {
+    <span class="comment">// Create an object to name.</span>
+    <span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="keyword">object</span>();
+
+    <span class="comment">// I dub this object &quot;Bob&quot;.</span>
+    <span class="keyword">var</span> nameProperty = obj.GetConnectedProperty(<span class="string">&quot;Name&quot;</span>);
+    nameProperty.Set(<span class="string">&quot;Bob&quot;</span>);
+
+    <span class="comment">// Pass the object to the DisplayName method, which is able to retrieve the connected property.</span>
+    DisplayName(obj);
+  }
+}</pre>
+            <p>Note: You should not develop a design using Connected Properties. The Connected Properties library should only be used to work around limitations in third-party code.</p>
+        </div>
+        <div data-role="controlgroup">
+            <a href="http://connectedproperties.codeplex.com/" data-role="button">Project page (CodePlex)</a>
+            <a href="http://nuget.org/packages/ConnectedProperties" data-role="button">NuGet package</a>
+            <a href="http://connectedproperties.codeplex.com/documentation" data-role="button">Documentation (CodePlex)</a>
+            <a href="http://connectedproperties.codeplex.com/discussions" data-role="button">Forum (CodePlex)</a>
+            <a href="http://connectedproperties.codeplex.com/workitem/list/basic" data-role="button">Issue tracker (CodePlex)</a>
+            <a href="http://connectedproperties.codeplex.com/SourceControl/BrowseLatest" data-role="button">Browse source code (CodePlex)</a>
+        </div>
+	</div>
+</div>
+
+<div data-role="page" id="libraries_AsyncEx" data-title="AsyncEx">
+    <div data-role="header">
+		<a href="#index" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+        <h2>AsyncEx</h2>
+    </div>
+	<div data-role="content">
+        <div data-role="controlgroup">
+            <a href="http://nitoasyncex.codeplex.com/" data-role="button">Project page (CodePlex)</a>
+            <a href="http://nuget.org/packages/Nito.AsyncEx" data-role="button">NuGet package</a>
+            <a href="http://nitoasyncex.codeplex.com/documentation" data-role="button">Documentation (CodePlex)</a>
+            <a href="http://nitoasyncex.codeplex.com/discussions" data-role="button">Forum (CodePlex)</a>
+            <a href="http://nitoasyncex.codeplex.com/workitem/list/basic" data-role="button">Issue tracker (CodePlex)</a>
+            <a href="http://nitoasyncex.codeplex.com/SourceControl/BrowseLatest" data-role="button">Browse source code (CodePlex)</a>
+        </div>
+	</div>
+</div>
