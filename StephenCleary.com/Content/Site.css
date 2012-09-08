@@ -17,10 +17,11 @@ header, footer, nav, section {
     white-space: normal;
 }
 
-pre.csharp {
+pre .csharp {
     border: 1px solid;
     max-height: 600px;
     padding: 5px;
+    display: block;
 }
 
 .csharp {

@@ -26,16 +26,19 @@ namespace StephenCleary.Helpers
             "orderby", "partial", "remove", "select", "set", "value", "var", "where", "yield",
         };
 
-        private static readonly Regex Whitespace = new Regex(@"^\s+");
-        private static readonly Regex Comment = new Regex(@"^//.*");
-        private static readonly Regex Identifier = new Regex(@"^[A-Za-z_@][A-Za-z0-9]*");
-        private static readonly Regex Character = new Regex(@"^'.+'");
-        private static readonly Regex String = new Regex(@"^"".+""");
-        private static readonly Regex VerbatimString = new Regex(@"^@""([^""]+|"""")+""");
+        private static readonly Regex Whitespace = new Regex(@"^(\s+)");
+        private static readonly Regex Comment = new Regex(@"^(//.*)");
+        private static readonly Regex Identifier = new Regex(@"^([A-Za-z_@][A-Za-z0-9]*)");
+        private static readonly Regex Character = new Regex(@"^('.+')");
+        private static readonly Regex String = new Regex(@"^("".+"")");
+        private static readonly Regex VerbatimString = new Regex(@"^(@""(?:[^""]+|"""")+"")");
+        private static readonly Regex HighlightedLine = new Regex(@"^`\*");
+        private static readonly Regex HighlightedSpan = new Regex(@"^`!");
+        private static readonly Regex TypeIdentifier = new Regex(@"^`([A-Za-z_@][A-Za-z0-9]*)`");
 
         private static readonly Regex[] Regexes = new Regex[]
         {
-            Whitespace, Comment, Identifier, Character, String, VerbatimString,
+            Whitespace, Comment, Identifier, Character, String, VerbatimString, HighlightedLine, HighlightedSpan, TypeIdentifier,
         };
 
         private static IEnumerable<Tuple<string, Regex>> Tokenize(string line)
@@ -51,17 +54,24 @@ namespace StephenCleary.Helpers
                 }
                 else
                 {
-                    yield return Tuple.Create(result.match.Value, result.regex);
+                    if (result.match.Groups.Count > 1)
+                        yield return Tuple.Create(result.match.Groups[1].Value, result.regex);
+                    else
+                        yield return Tuple.Create(result.match.Value, result.regex);
                     index += result.match.Length;
                 }
             }
         }
 
-        private static void CSharp(this HtmlHelper @this, string code, IEnumerable<string> typeNames, StringBuilder sb)
+        private static string FormatCSharpCode(this HtmlHelper @this, string code)
         {
+            var sb = new StringBuilder();
             var lines = code.Replace("\r\n", "\n").Trim().Split('\n');
             foreach (var line in lines)
             {
+                bool lineHighlighted = false;
+                bool inHighlightSpan = false;
+
                 // Tokenize the string until we reach the end.
                 var tokens = Tokenize(line).ToArray();
                 for (var i = 0; i != tokens.Length; ++i)
@@ -73,12 +83,25 @@ namespace StephenCleary.Helpers
                         sb.Append("<span class=\"comment\">" + @this.Encode(token.Item1) + "</span>");
                     else if (token.Item2 == Character || token.Item2 == String || token.Item2 == VerbatimString)
                         sb.Append("<span class=\"string\">" + @this.Encode(token.Item1) + "</span>");
+                    else if (token.Item2 == TypeIdentifier)
+                        sb.Append("<span class=\"type\">" + @this.Encode(token.Item1) + "</span>");
+                    else if (token.Item2 == HighlightedLine)
+                    {
+                        lineHighlighted = true;
+                        sb.Append("<code class=\"highlight\">");
+                    }
+                    else if (token.Item2 == HighlightedSpan)
+                    {
+                        if (inHighlightSpan)
+                            sb.Append("</span>");
+                        else
+                            sb.Append("<span class=\"highlight\">");
+                        inHighlightSpan = !inHighlightSpan;
+                    }
                     else if (token.Item2 == Identifier)
                     {
                         if (Keywords.Concat(ContextualKeywords).Contains(token.Item1))
                             sb.Append("<span class=\"keyword\">" + @this.Encode(token.Item1) + "</span>");
-                        else if (char.IsUpper(token.Item1[0]) && (i == tokens.Length - 1 || tokens[i + 1].Item1 != "(" || (i >= 2 && tokens[i - 2].Item1 == "new")) && tokens[0].Item1 != "using")
-                            sb.Append("<span class=\"type\">" + @this.Encode(token.Item1) + "</span>");
                         else
                             sb.Append(@this.Encode(token.Item1));
                     }
@@ -86,25 +109,30 @@ namespace StephenCleary.Helpers
                         throw new NotImplementedException();
                 }
 
+                if (lineHighlighted)
+                    sb.Append("</code>");
                 sb.AppendLine();
             }
+
+            return sb.ToString();
         }
 
-        public static HtmlString CSharpSpan(this HtmlHelper @this, string code, params string[] typeNames)
+        public static HtmlString CSharp(this HtmlHelper @this, string code)
         {
             var sb = new StringBuilder();
-            sb.Append("<span class=\"csharp\">");
-            CSharp(@this, code, typeNames, sb);
-            sb.Append("</span>");
-            return new HtmlString(sb.ToString());
-        }
+            if (code.Contains('\n'))
+            {
+                sb.Append("<pre><code class=\"csharp\">");
+                sb.Append(FormatCSharpCode(@this, code));
+                sb.Append("</code></pre>");
+            }
+            else
+            {
+                sb.Append("<code class=\"csharp\">");
+                sb.Append(FormatCSharpCode(@this, code).Trim());
+                sb.Append("</code>");
+            }
 
-        public static HtmlString CSharpPre(this HtmlHelper @this, string code, params string[] typeNames)
-        {
-            var sb = new StringBuilder();
-            sb.Append("<pre class=\"csharp\">");
-            CSharp(@this, code, typeNames, sb);
-            sb.Append("</pre>");
             return new HtmlString(sb.ToString());
         }
     }
