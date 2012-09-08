@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
     <script>
         // Fix IE 9.0.8112.16421
         // Test case:
@@ -20,7 +20,9 @@
 <body>
     @RenderBody()
 
-    @Scripts.Render("~/bundles/jquery", "~/bundles/Init", "~/bundles/jquery.mobile")
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    @Scripts.Render("~/bundles/Init")
+    <script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
