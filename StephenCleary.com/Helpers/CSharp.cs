@@ -26,20 +26,28 @@ namespace StephenCleary.Helpers
             "orderby", "partial", "remove", "select", "set", "value", "var", "where", "yield",
         };
 
-        private static readonly Regex Whitespace = new Regex(@"^(\s+)");
-        private static readonly Regex Comment = new Regex(@"^(//.*)");
-        private static readonly Regex Identifier = new Regex(@"^([A-Za-z_@][A-Za-z0-9]*)");
-        private static readonly Regex Character = new Regex(@"^('.+')");
-        private static readonly Regex String = new Regex(@"^("".+"")");
-        private static readonly Regex VerbatimString = new Regex(@"^(@""(?:[^""]+|"""")+"")");
+        private static readonly Regex Whitespace = new Regex(@"^\s+");
+        private static readonly Regex Comment = new Regex(@"^//.*");
+        private static readonly Regex Identifier = new Regex(@"^[A-Za-z_@][A-Za-z0-9]*");
+        private static readonly Regex Character = new Regex(@"^'.+'");
+        private static readonly Regex String = new Regex(@"^"".+""");
+        private static readonly Regex VerbatimString = new Regex(@"^@""(?:[^""]+|"""")+""");
         private static readonly Regex HighlightedSpan = new Regex(@"^`!");
         private static readonly Regex TypeIdentifier = new Regex(@"^`([A-Za-z_@][A-Za-z0-9]*)`");
 
+        /// <summary>
+        /// Every regex in this array is applied to an input string, one at a time. The first matching regex is used to parse the token.
+        /// The actual token is the first group in the regex, or the entire match if there are no groups.
+        /// </summary>
         private static readonly Regex[] Regexes = new Regex[]
         {
             Whitespace, Comment, Identifier, Character, String, VerbatimString, HighlightedSpan, TypeIdentifier,
         };
 
+        /// <summary>
+        /// Parses an input line into tokens. Each token is returned along with the regex that created it.
+        /// </summary>
+        /// <param name="line">The line of code to parse.</param>
         private static IEnumerable<Tuple<string, Regex>> Tokenize(string line)
         {
             int index = 0;
