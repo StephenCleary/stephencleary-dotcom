@@ -9,7 +9,7 @@ header, footer, nav, section {
     display: block;
 }
 
-#content {
+.hidden {
     display: none;
 }
 

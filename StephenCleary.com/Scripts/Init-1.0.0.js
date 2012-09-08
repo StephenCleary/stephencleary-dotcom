@@ -4,4 +4,6 @@
     var x = 'an';
     var y = 'steph';
     $('#email').attr({ href: 'mailto:' + y + 'en' + x + 'dm' + x + 'dy@' + 'gma' + 'il.' + 'com' });
+
+    $('#main').removeClass('hidden');
 });
