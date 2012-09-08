@@ -1,4 +1,6 @@
-﻿@{
+﻿@using StephenCleary.Helpers;
+
+@{
     ViewBag.Title = "Stephen Cleary \"dot com\"";
 }
 
@@ -52,7 +54,7 @@
             <li data-role="list-divider">Trade journals</li>
 	        <li><a href="http://msdn.microsoft.com/en-us/magazine/gg598924.aspx">
                 <h2>It's All About the SynchronizationContext</h2>
-                <p class="notruncate">A thorough look at the <span class="csharp"><span class="type">SynchronizationContext</span></span> type, starting with some history and concluding with how it is used by various components (including components in development such as the <span class="csharp"><span class="keyword">async</span>/<span class="keyword">await</span></span> compiler support).</p>
+                <p class="notruncate">A thorough look at the @Html.CSharpSpan("SynchronizationContext") type, starting with some history and concluding with how it is used by various components (including components in development such as the @Html.CSharpSpan("async") / @Html.CSharpSpan("await") compiler support).</p>
                 <p class="ui-li-aside">MSDN Magazine, February 2011</p>
 	        </a></li>
 	        <li><a href="http://www.boost.org/doc/libs/1_43_0/libs/type_traits/doc/html/boost_typetraits/background.html">
@@ -63,7 +65,7 @@
             <li data-role="list-divider">Online</li>
 	        <li><a href="http://nitoprograms.blogspot.com/2012/02/async-and-await.html">
                 <h2>Async and Await</h2>
-                <p class="notruncate">An introduction to <span class="csharp"><span class="keyword">async</span></span> and <span class="csharp"><span class="keyword">await</span></span>.</p>
+                <p class="notruncate">An introduction to @Html.CSharpSpan("async") and @Html.CSharpSpan("await").</p>
                 <p class="ui-li-aside">Blog</p>
             </a></li>
 	        <li><a href="http://nitoprograms.blogspot.com/2009/04/tcpip-net-sockets-faq.html">
@@ -73,12 +75,12 @@
             </a></li>
 	        <li><a href="http://nitoprograms.blogspot.com/2009/08/how-to-implement-idisposable-and.html">
                 <h2>Implementing IDisposable and Finalizers</h2>
-                <p class="notruncate">Three simple rules for <span class="csharp"><span class="type">IDisposable</span></span> and finalizers. These rules are derived from my background in reliable programming, and are far simpler than the "dispose pattern" officially recommended by Microsoft.</p>
+                <p class="notruncate">Three simple rules for @Html.CSharpSpan("IDisposable") and finalizers. These rules are derived from my background in reliable programming, and are far simpler than the "dispose pattern" officially recommended by Microsoft.</p>
                 <p class="ui-li-aside">Blog</p>
             </a></li>
 	        <li><a href="http://www.codeproject.com/Articles/29534/IDisposable-What-Your-Mother-Never-Told-You-About">
                 <h2>IDisposable: What Your Mother Never Told You about Resource Deallocation</h2>
-                <p class="notruncate">An early article discussing some of the problems around nondeterministic resource deallocation and <span class="csharp"><span class="type">IDisposable</span></span>. I was still quite new to .NET at the time.</p>
+                <p class="notruncate">An early article discussing some of the problems around nondeterministic resource deallocation and @Html.CSharpSpan("IDisposable"). I was still quite new to .NET at the time.</p>
                 <p class="ui-li-aside">Code Project</p>
             </a></li>
         </ul>
@@ -98,7 +100,7 @@
 	        </a></li>
 	        <li><a href="#libraries_AsyncEx">
                 <h2>AsyncEx</h2>
-                <p>Helper types for using <span class="csharp"><span class="keyword">async</span></span> and <span class="csharp"><span class="keyword">await</span></span>.</p>
+                <p>Helper types for using @Html.CSharpSpan("async") and @Html.CSharpSpan("await").</p>
             </a></li>
 	        <li><a href="#libraries_Comparers">
                 <h2>Comparers</h2>
@@ -155,34 +157,34 @@
         <div>
             <p>Connected Properties allow you to dynamically attach properties to any reference type that uses reference equality.</p>
             <p>The connected properties have lifetimes exactly like regular properties (even if they reference their carrier object). A connected property is a true <a href="http://en.wikipedia.org/wiki/Ephemeron">ephemeron</a>.</p>
-            <pre class="csharp">
-<span class="comment">// Use the Connected Properties library.</span>
-<span class="keyword">using</span> Nito.ConnectedProperties;
-<span class="keyword">using</span> Nito.ConnectedProperties.Named;
+@Html.CSharpPre(@"
+// Use the Connected Properties library.
+using Nito.ConnectedProperties;
+using Nito.ConnectedProperties.Named;
 
-<span class="keyword">class</span> Program
+class Program
 {
-  <span class="comment">// Display the Name of any object passed into this method.</span>
-  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> DisplayName(<span class="keyword">object</span> obj)
+  // Display the Name of any object passed into this method.
+  public static void DisplayName(object obj)
   {
-    <span class="comment">// Look up a connected property called &quot;Name&quot;.</span>
-    <span class="keyword">var</span> nameProperty = obj.GetConnectedProperty(<span class="string">&quot;Name&quot;</span>);
-    <span class="type">Console</span>.WriteLine(<span class="string">&quot;Name: &quot;</span> + nameProperty.Get());
+    // Look up a connected property called ""Name"".
+    var nameProperty = obj.GetConnectedProperty(""Name"");
+    Console.WriteLine(""Name: "" + nameProperty.Get());
   }
 
-  <span class="keyword">static</span> <span class="keyword">void</span> Main()
+  static void Main()
   {
-    <span class="comment">// Create an object to name.</span>
-    <span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="keyword">object</span>();
+    // Create an object to name.
+    var obj = new object();
 
-    <span class="comment">// I dub this object &quot;Bob&quot;.</span>
-    <span class="keyword">var</span> nameProperty = obj.GetConnectedProperty(<span class="string">&quot;Name&quot;</span>);
-    nameProperty.Set(<span class="string">&quot;Bob&quot;</span>);
+    // I dub this object ""Bob"".
+    var nameProperty = obj.GetConnectedProperty(""Name"");
+    nameProperty.Set(""Bob"");
 
-    <span class="comment">// Pass the object to the DisplayName method, which is able to retrieve the connected property.</span>
+    // Pass the object to the DisplayName method, which is able to retrieve the connected property.
     DisplayName(obj);
   }
-}</pre>
+}")
             <p>Note: You should not develop a design using Connected Properties. The Connected Properties library should only be used to work around limitations in third-party code.</p>
         </div>
         <div data-role="controlgroup">
