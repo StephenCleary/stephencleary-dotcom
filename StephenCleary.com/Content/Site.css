@@ -17,7 +17,7 @@ header, footer, nav, section {
     white-space: normal;
 }
 
-pre .csharp {
+pre code.csharp {
     border: 1px solid;
     max-height: 600px;
     padding: 5px;
@@ -44,4 +44,8 @@ pre .csharp {
 
 .csharp .type {
     color: #2B91AF;
+}
+
+.csharp .highlight {
+    background-color: yellow;
 }

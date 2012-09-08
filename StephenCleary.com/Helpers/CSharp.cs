@@ -32,13 +32,12 @@ namespace StephenCleary.Helpers
         private static readonly Regex Character = new Regex(@"^('.+')");
         private static readonly Regex String = new Regex(@"^("".+"")");
         private static readonly Regex VerbatimString = new Regex(@"^(@""(?:[^""]+|"""")+"")");
-        private static readonly Regex HighlightedLine = new Regex(@"^`\*");
         private static readonly Regex HighlightedSpan = new Regex(@"^`!");
         private static readonly Regex TypeIdentifier = new Regex(@"^`([A-Za-z_@][A-Za-z0-9]*)`");
 
         private static readonly Regex[] Regexes = new Regex[]
         {
-            Whitespace, Comment, Identifier, Character, String, VerbatimString, HighlightedLine, HighlightedSpan, TypeIdentifier,
+            Whitespace, Comment, Identifier, Character, String, VerbatimString, HighlightedSpan, TypeIdentifier,
         };
 
         private static IEnumerable<Tuple<string, Regex>> Tokenize(string line)
@@ -69,7 +68,6 @@ namespace StephenCleary.Helpers
             var lines = code.Replace("\r\n", "\n").Trim().Split('\n');
             foreach (var line in lines)
             {
-                bool lineHighlighted = false;
                 bool inHighlightSpan = false;
 
                 // Tokenize the string until we reach the end.
@@ -85,11 +83,6 @@ namespace StephenCleary.Helpers
                         sb.Append("<span class=\"string\">" + @this.Encode(token.Item1) + "</span>");
                     else if (token.Item2 == TypeIdentifier)
                         sb.Append("<span class=\"type\">" + @this.Encode(token.Item1) + "</span>");
-                    else if (token.Item2 == HighlightedLine)
-                    {
-                        lineHighlighted = true;
-                        sb.Append("<code class=\"highlight\">");
-                    }
                     else if (token.Item2 == HighlightedSpan)
                     {
                         if (inHighlightSpan)
@@ -109,8 +102,6 @@ namespace StephenCleary.Helpers
                         throw new NotImplementedException();
                 }
 
-                if (lineHighlighted)
-                    sb.Append("</code>");
                 sb.AppendLine();
             }
 
