@@ -1,0 +1,51 @@
+﻿body {
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+}
+
+header, footer, nav, section {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+.notruncate {
+    white-space: normal;
+}
+
+pre code.csharp {
+    border: 1px solid;
+    max-height: 600px;
+    padding: 5px;
+    display: block;
+}
+
+.csharp {
+    font-family: Consolas, monospace;
+    padding: 1px 5px 1px 5px;
+    background-color: #eeeeee;
+}
+
+.csharp .comment {
+    color: green;
+}
+
+.csharp .keyword {
+    color: blue;
+}
+
+.csharp .string {
+    color: #A31515;
+}
+
+.csharp .type {
+    color: #2B91AF;
+}
+
+.csharp .highlight {
+    background-color: yellow;
+}
