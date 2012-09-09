@@ -1,12 +1,13 @@
 ﻿body {
     font-size: .85em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-    color: #232323;
-    background-color: #fff;
 }
 
-header, footer, nav, section {
-    display: block;
+.ui-body-c, .ui-title, .ui-btn-up-c, .ui-btn-hover-c, .ui-btn-down-c {
+    font-family: "Segoe UI", Verdana, Helvetica, Arial, Sans-Serif;
+}
+
+.ui-header .ui-title {
+    font-size: 24px;
 }
 
 .hidden {
