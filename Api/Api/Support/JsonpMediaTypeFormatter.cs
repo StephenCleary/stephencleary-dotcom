@@ -19,9 +19,6 @@ namespace Api.Support
     {
         public JsonpMediaTypeFormatter()
         {
-            SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
-            SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/javascript"));
-
             CallbackParameterName = "callback";
         }
 
@@ -31,7 +28,7 @@ namespace Api.Support
         public string CallbackParameterName { get; set; }
 
         /// <summary>
-        /// The value of <see cref="CallbackParameterName"/> for this request.
+        /// The value of <see cref="CallbackParameterName"/> for this request. This is <c>null</c> if this is not a JSON-P request.
         /// </summary>
         private string callback;
 
@@ -40,13 +37,11 @@ namespace Api.Support
         /// </summary>
         public override MediaTypeFormatter GetPerRequestFormatterInstance(Type type, HttpRequestMessage request, MediaTypeHeaderValue mediaType)
         {
-            var formatter = new JsonpMediaTypeFormatter()
+            return new JsonpMediaTypeFormatter()
             {
-                callback = GetCallbackFunction(request, CallbackParameterName)
+                callback = GetCallbackFunction(request, CallbackParameterName),
+                SerializerSettings = GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings,
             };
-
-            formatter.SerializerSettings = GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings;
-            return formatter;
         }
 
         /// <summary>
@@ -98,14 +93,15 @@ namespace Api.Support
         /// <summary>
         /// Registers the JSON-P formatter.
         /// </summary>
-        public static void Register()
+        public static void Register(string callbackParameterName = "callback")
         {
             var formatters = GlobalConfiguration.Configuration.Formatters;
             var defaultJsonFormatter = formatters.JsonFormatter;
             int index = formatters.IndexOf(defaultJsonFormatter);
             if (index != -1)
                 formatters.RemoveAt(index);
-            GlobalConfiguration.Configuration.Formatters.Insert(index, new JsonpMediaTypeFormatter());
+            GlobalConfiguration.Configuration.Formatters.Insert(index,
+                new JsonpMediaTypeFormatter { CallbackParameterName = callbackParameterName, });
         }
     }
 }
