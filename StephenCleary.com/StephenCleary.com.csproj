@@ -116,10 +116,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\images\avatar.128.jpg" />
+    <Content Include="Content\images\blank.gif" />
     <Content Include="Content\images\trythis.128.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\Init-1.0.0.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -136,6 +136,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

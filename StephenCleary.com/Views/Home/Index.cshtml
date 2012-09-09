@@ -12,8 +12,8 @@
     </div>
 	<div data-role="content">
         <div>
-            <div style="float:left;"><img src="~/Content/images/avatar.128.jpg" /></div>
-            <div style="float:right;"><img src="~/Content/images/trythis.128.jpg" /></div>
+            <div style="float:left;"><img src="Content/images/blank.gif" width="128" height="128" data-src="Content/images/avatar.128.jpg" /></div>
+            <div style="float:right;"><img src="Content/images/blank.gif" width="128" height="128" data-src="Content/images/trythis.128.jpg" /></div>
             <div style="text-align:center;">
                 <p>I am Stephen Cleary, a Christian, husband, father, and programmer living in Northern Michigan.</p>
                 <p>This site is a collection of my projects and articles; I hope you find them useful!</p>
@@ -106,12 +106,12 @@
             </a></li>
 	        <li><a href="#libraries_Comparers">
                 <h2>Comparers</h2>
-                <img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=comparers&DownloadId=404414" />
+                <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=comparers&DownloadId=404414" />
                 <p>The last comparison library you'll ever need!</p>
             </a></li>
 	        <li><a href="#libraries_ArraySegments">
                 <h2>ArraySegments</h2>
-                <img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=arraysegments&DownloadId=392090" />
+                <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=arraysegments&DownloadId=392090" />
                 <p>A library for slicing and dicing arrays (without copying).</p>
             </a></li>
         </ul>
@@ -124,7 +124,7 @@
         <h2>ArraySegments</h2>
     </div>
 	<div data-role="content">
-        <img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=arraysegments&DownloadId=392090" />
+        <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=arraysegments&DownloadId=392090" />
         <div data-role="controlgroup">
             <a href="http://arraysegments.codeplex.com/" data-role="button">Project page (CodePlex)</a>
             <a href="https://nuget.org/packages/Nito.ArraySegments" data-role="button">NuGet package</a>
@@ -142,7 +142,7 @@
         <h2>Comparers</h2>
     </div>
 	<div data-role="content">
-        <img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=comparers&DownloadId=404414" />
+        <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=comparers&DownloadId=404414" />
         <div data-role="controlgroup">
             <a href="http://comparers.codeplex.com/" data-role="button">Project page (CodePlex)</a>
             <a href="http://nuget.org/packages/Comparers" data-role="button">NuGet package</a>
@@ -222,3 +222,23 @@ class `Program`
 </div>
 
 </div>
+
+@section scripts {
+
+<script type="text/javascript">
+$(document).bind("mobileinit", function () {
+    $.mobile.defaultPageTransition = 'none';
+
+    $('img').each(function () {
+        $(this).attr('src', $(this).attr('data-src'));
+    });
+    
+    var x = 'an';
+    var y = 'steph';
+    $('#email').attr({ href: 'mailto:' + y + 'en' + x + 'dm' + x + 'dy@@' + 'gma' + 'il.' + 'com' });
+
+    $('#main').removeClass('hidden');
+});
+</script>
+
+}
