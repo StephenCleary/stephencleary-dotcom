@@ -1,13 +1,17 @@
-﻿body {
-    font-size: .85em;
-}
-
-.ui-body-c, .ui-title, .ui-btn-up-c, .ui-btn-hover-c, .ui-btn-down-c {
+﻿.ui-body-c, .ui-title, .ui-btn-up-c, .ui-btn-hover-c, .ui-btn-down-c {
     font-family: "Segoe UI", Verdana, Helvetica, Arial, Sans-Serif;
 }
 
 .ui-header .ui-title {
     font-size: 24px;
+}
+
+.ui-li-heading, .ui-btn-inner, .ui-li-divider, .ui-li-static {
+    font-size: 20px;
+}
+
+.ui-li-desc {
+    font-size: 16px;
 }
 
 .hidden {
