@@ -98,10 +98,12 @@
         <ul data-role="listview">
 	        <li><a href="#libraries_ConnectedProperties">
                 <h2>Connected Properties</h2>
+                <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=connectedproperties&DownloadId=483866" />
                 <p>Dynamically add properties to (almost) any object instance.</p>
 	        </a></li>
 	        <li><a href="#libraries_AsyncEx">
                 <h2>AsyncEx</h2>
+                <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=nitoasyncex&DownloadId=483868" />
                 <p>Helper types for developing with @Html.CSharp("async") and @Html.CSharp("await").</p>
             </a></li>
 	        <li><a href="#libraries_Comparers">
@@ -124,7 +126,34 @@
         <h2>ArraySegments</h2>
     </div>
 	<div data-role="content">
-        <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=arraysegments&DownloadId=483861" />
+        <div>
+            <p>The ArraySegments library allows you to easily slice and dice @Html.CSharp("`ArraySegment`<`T`>") instances.</p>
+@Html.CSharp(@"
+// Use the ArraySegments library.
+using ArraySegments;
+
+class `Test`
+{
+  public static void Playground()
+  {
+    byte[] myData = ...;
+    `ArraySegment`<byte> data = myData.AsArraySegment();
+
+    // Take, Skip, TakeLast, SkipLast, and Slice are all available.
+    `ArraySegment`<byte> header = data.Take(1024); // Look ma, no copying!
+
+    // BinaryReader/BinaryWriter/MemoryStreams also provided for convenience.
+    using (var binaryReader = header.CreateBinaryReader())
+    {
+      int littleEndianInt32 = binaryReader.ReadInt32();
+      ...;
+    }
+  }
+}")
+        </div>
+        <div style="text-align:center">
+            <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=arraysegments&DownloadId=483861" />
+        </div>
         <div data-role="controlgroup">
             <a href="http://arraysegments.codeplex.com/" data-role="button">Project page (CodePlex)</a>
             <a href="https://nuget.org/packages/Nito.ArraySegments" data-role="button">NuGet package</a>
@@ -141,8 +170,48 @@
 		<a href="#index" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
         <h2>Comparers</h2>
     </div>
+    <div>
+        <p>The Comparers library provides a semi-fluent API for defining how objects can be compared. This makes even the most complex comparisons relatively easy.</p>
+@Html.CSharp(@"
+// Use the Comparers library.
+using Comparers;
+
+class `Person`
+{
+  public string FirstName { get; }
+  public string LastName { get; }
+}
+
+class `Test`
+{
+  public static void SortByLastNameThenFirstName(`List`<`Person`> list)
+  {
+    `IComparer`<`Person`> nameComparer = `Compare`<`Person`>.OrderBy(p => p.LastName).ThenBy(p => p.FirstName);
+    list.Sort(nameComparer);
+  }
+}")
+        <p>The Comparers library also provides assistance for defining the default comparison for a type:</p>
+@Html.CSharp(@"
+// Use the Comparers library.
+using Comparers;
+
+class `Person` : `ComparableBase`<`Person`>
+{
+  public string FirstName { get; }
+  public string LastName { get; }
+
+  static Person()
+  {
+    // ComparableBase uses DefaultComparer to correctly implement:
+    //   IComparable<Person>, IEquatable<Person>, IComparable, Object.Equals, Object.GetHashCode.
+    DefaultComparer = `Compare`<`Person`>.OrderBy(p => p.LastName).ThenBy(p => p.FirstName);
+  }
+}")
+    </div>
 	<div data-role="content">
-        <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=comparers&DownloadId=404414" />
+        <div style="text-align:center">
+            <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=comparers&DownloadId=404414" />
+        </div>
         <div data-role="controlgroup">
             <a href="http://comparers.codeplex.com/" data-role="button">Project page (CodePlex)</a>
             <a href="http://nuget.org/packages/Comparers" data-role="button">NuGet package</a>
@@ -193,6 +262,9 @@ class `Program`
 }")
             <p>Note: You should not develop a design using Connected Properties. The Connected Properties library should only be used to work around limitations in third-party code.</p>
         </div>
+        <div style="text-align:center">
+            <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=connectedproperties&DownloadId=483866" />
+        </div>
         <div data-role="controlgroup">
             <a href="http://connectedproperties.codeplex.com/" data-role="button">Project page (CodePlex)</a>
             <a href="http://nuget.org/packages/ConnectedProperties" data-role="button">NuGet package</a>
@@ -210,6 +282,51 @@ class `Program`
         <h2>AsyncEx</h2>
     </div>
 	<div data-role="content">
+        <div>
+            <p>This is a "fill in the gaps" sort of library for working with @Html.CSharp("async") and @Html.CSharp("await"). This library contains a large number of small utility classes.</p>
+            <p>One type is @Html.CSharp("`AsyncLazy`<`T`>"), which provides asynchronous lazy initialization. It executes the asynchronous initialization when it is awaited, and ensures that the initialization is only performed once.</p>
+@Html.CSharp(@"
+// Use the AsyncEx library.
+using Nito.AsyncEx;
+
+class `Test`
+{
+  private static readonly `AsyncLazy`<`MyResource`> resource =
+      new `AsyncLazy`(async () =>
+      {
+        var ret = new `MyResource`();
+        await ret.InitializeAsync();
+        return ret;
+      });
+
+  public static async `Task` MethodWhichUsesResourceAsync()
+  {
+    `MyResource` myResource = await resource;
+    ...;
+  }
+}")
+            <p>Another useful type is @Html.CSharp("`AsyncLock`"), an asynchronous lock. Asynchronous methods may use the lock for synchronization without blocking (that is, the <i>method</i> is blocked, but the <i>thread</i> is not):</p>
+@Html.CSharp(@"
+// Use the AsyncEx library.
+using Nito.AsyncEx;
+
+class `Test`
+{
+  private readonly `AsyncLock` sync = new `AsyncLock`();
+
+  public async `Task` AccessSharedStateAsync()
+  {
+    using (await sync.LockAsync())
+    {
+      ...;
+    }
+  }
+}")
+        </div>
+
+        <div style="text-align:center">
+            <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=nitoasyncex&DownloadId=483868" />
+        </div>
         <div data-role="controlgroup">
             <a href="http://nitoasyncex.codeplex.com/" data-role="button">Project page (CodePlex)</a>
             <a href="http://nuget.org/packages/Nito.AsyncEx" data-role="button">NuGet package</a>
