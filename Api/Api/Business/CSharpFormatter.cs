@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
-using System.Web.Mvc;
 
-namespace StephenCleary.Helpers
+namespace StephenCleary
 {
-    public static class CSharpHtmlHelper
+    public static class CSharpFormatter
     {
         private static readonly string[] Keywords = new string[]
         {
@@ -70,7 +69,7 @@ namespace StephenCleary.Helpers
             }
         }
 
-        private static string FormatCSharpCode(this HtmlHelper @this, string code)
+        private static string FormatCSharpCode(string code)
         {
             var sb = new StringBuilder();
             var lines = code.Replace("\r\n", "\n").Trim().Split('\n');
@@ -84,13 +83,13 @@ namespace StephenCleary.Helpers
                 {
                     var token = tokens[i];
                     if (token.Item2 == null || token.Item2 == Whitespace)
-                        sb.Append(@this.Encode(token.Item1));
+                        sb.Append(HttpUtility.HtmlEncode(token.Item1));
                     else if (token.Item2 == Comment)
-                        sb.Append("<span class=\"comment\">" + @this.Encode(token.Item1) + "</span>");
+                        sb.Append("<span class=\"comment\">" + HttpUtility.HtmlEncode(token.Item1) + "</span>");
                     else if (token.Item2 == Character || token.Item2 == String || token.Item2 == VerbatimString)
-                        sb.Append("<span class=\"string\">" + @this.Encode(token.Item1) + "</span>");
+                        sb.Append("<span class=\"string\">" + HttpUtility.HtmlEncode(token.Item1) + "</span>");
                     else if (token.Item2 == TypeIdentifier)
-                        sb.Append("<span class=\"type\">" + @this.Encode(token.Item1) + "</span>");
+                        sb.Append("<span class=\"type\">" + HttpUtility.HtmlEncode(token.Item1) + "</span>");
                     else if (token.Item2 == HighlightedSpan)
                     {
                         if (inHighlightSpan)
@@ -102,9 +101,9 @@ namespace StephenCleary.Helpers
                     else if (token.Item2 == Identifier)
                     {
                         if (Keywords.Concat(ContextualKeywords).Contains(token.Item1))
-                            sb.Append("<span class=\"keyword\">" + @this.Encode(token.Item1) + "</span>");
+                            sb.Append("<span class=\"keyword\">" + HttpUtility.HtmlEncode(token.Item1) + "</span>");
                         else
-                            sb.Append(@this.Encode(token.Item1));
+                            sb.Append(HttpUtility.HtmlEncode(token.Item1));
                     }
                     else
                         throw new NotImplementedException();
@@ -116,19 +115,19 @@ namespace StephenCleary.Helpers
             return sb.ToString();
         }
 
-        public static HtmlString CSharp(this HtmlHelper @this, string code)
+        public static HtmlString CSharp(string code)
         {
             var sb = new StringBuilder();
             if (code.Contains('\n'))
             {
                 sb.Append("<pre><code class=\"csharp\">");
-                sb.Append(FormatCSharpCode(@this, code));
+                sb.Append(FormatCSharpCode(code));
                 sb.Append("</code></pre>");
             }
             else
             {
                 sb.Append("<code class=\"csharp\">");
-                sb.Append(FormatCSharpCode(@this, code).Trim());
+                sb.Append(FormatCSharpCode(code).Trim());
                 sb.Append("</code>");
             }
 
