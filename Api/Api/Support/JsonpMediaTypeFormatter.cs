@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
@@ -80,14 +81,12 @@ namespace Api.Support
         /// </summary>
         private async Task DoWriteToStreamAsync(Type type, object value, Stream stream, HttpContent content, TransportContext transportContext)
         {
-            using (var writer = new StreamWriter(stream))
-            {
-                await writer.WriteAsync(callback + "(");
-                await writer.FlushAsync();
-                await base.WriteToStreamAsync(type, value, stream, content, transportContext);
-                await writer.WriteAsync(")");
-                await writer.FlushAsync();
-            }
+            var encoding = SelectCharacterEncoding(content == null ? null : content.Headers);
+            var prefix = encoding.GetBytes(callback + "(");
+            await stream.WriteAsync(prefix, 0, prefix.Length);
+            await base.WriteToStreamAsync(type, value, stream, content, transportContext);
+            var postfix = encoding.GetBytes(")");
+            await stream.WriteAsync(postfix, 0, postfix.Length);
         }
 
         /// <summary>
@@ -100,7 +99,7 @@ namespace Api.Support
             int index = formatters.IndexOf(defaultJsonFormatter);
             if (index != -1)
                 formatters.RemoveAt(index);
-            GlobalConfiguration.Configuration.Formatters.Insert(index,
+            GlobalConfiguration.Configuration.Formatters.Insert(index == -1 ? 0 : index,
                 new JsonpMediaTypeFormatter { CallbackParameterName = callbackParameterName, });
         }
     }
