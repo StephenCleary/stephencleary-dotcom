@@ -41,7 +41,12 @@ namespace Api.Support
             return new JsonpMediaTypeFormatter()
             {
                 callback = GetCallbackFunction(request, CallbackParameterName),
-                SerializerSettings = GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings,
+                CallbackParameterName = CallbackParameterName,
+                Indent = Indent,
+                MaxDepth = MaxDepth,
+                RequiredMemberSelector = RequiredMemberSelector,
+                SerializerSettings = SerializerSettings,
+                UseDataContractJsonSerializer = UseDataContractJsonSerializer,
             };
         }
 
@@ -95,12 +100,20 @@ namespace Api.Support
         public static void Register(string callbackParameterName = "callback")
         {
             var formatters = GlobalConfiguration.Configuration.Formatters;
-            var defaultJsonFormatter = formatters.JsonFormatter;
+            var defaultJsonFormatter = formatters.JsonFormatter ?? new JsonMediaTypeFormatter();
             int index = formatters.IndexOf(defaultJsonFormatter);
+            var jsonFormatter = new JsonpMediaTypeFormatter
+            {
+                CallbackParameterName = callbackParameterName,
+                Indent = defaultJsonFormatter.Indent,
+                MaxDepth = defaultJsonFormatter.MaxDepth,
+                RequiredMemberSelector = defaultJsonFormatter.RequiredMemberSelector,
+                SerializerSettings = defaultJsonFormatter.SerializerSettings,
+                UseDataContractJsonSerializer = defaultJsonFormatter.UseDataContractJsonSerializer,
+            };
             if (index != -1)
                 formatters.RemoveAt(index);
-            GlobalConfiguration.Configuration.Formatters.Insert(index == -1 ? 0 : index,
-                new JsonpMediaTypeFormatter { CallbackParameterName = callbackParameterName, });
+            GlobalConfiguration.Configuration.Formatters.Insert(index == -1 ? 0 : index, jsonFormatter);
         }
     }
 }
