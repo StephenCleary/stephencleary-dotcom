@@ -1,0 +1,63 @@
+﻿@using StephenCleary.Helpers;
+
+<div data-role="page" id="libraries_AsyncEx" data-title="AsyncEx">
+    <div data-role="header" data-theme="d">
+		<a href="#index" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+        <h2>AsyncEx</h2>
+    </div>
+	<div data-role="content">
+        <div>
+            <p>This is a "fill in the gaps" sort of library for working with @Html.CSharp("async") and @Html.CSharp("await"). This library contains a large number of small utility classes.</p>
+            <p>One type is @Html.CSharp("`AsyncLazy`<`T`>"), which provides asynchronous lazy initialization. It executes the asynchronous initialization when it is awaited, and ensures that the initialization is only performed once.</p>
+@Html.CSharp(@"
+// Use the AsyncEx library.
+using Nito.AsyncEx;
+
+class `Test`
+{
+  private static readonly `AsyncLazy`<`MyResource`> resource =
+      new `AsyncLazy`(async () =>
+      {
+        var ret = new `MyResource`();
+        await ret.InitializeAsync();
+        return ret;
+      });
+
+  public static async `Task` MethodWhichUsesResourceAsync()
+  {
+    `MyResource` myResource = await resource;
+    ...;
+  }
+}")
+            <p>Another useful type is @Html.CSharp("`AsyncLock`"), an asynchronous lock. Asynchronous methods may use the lock for synchronization without blocking (that is, the <i>method</i> is blocked, but the <i>thread</i> is not):</p>
+@Html.CSharp(@"
+// Use the AsyncEx library.
+using Nito.AsyncEx;
+
+class `Test`
+{
+  private readonly `AsyncLock` sync = new `AsyncLock`();
+
+  public async `Task` AccessSharedStateAsync()
+  {
+    using (await sync.LockAsync())
+    {
+      ...;
+    }
+  }
+}")
+        </div>
+
+        <div style="text-align:center">
+            <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=nitoasyncex&DownloadId=483868" />
+        </div>
+        <div data-role="controlgroup">
+            <a href="http://nitoasyncex.codeplex.com/" data-role="button">Project page (CodePlex)</a>
+            <a href="http://nuget.org/packages/Nito.AsyncEx" data-role="button">NuGet package</a>
+            <a href="http://nitoasyncex.codeplex.com/documentation" data-role="button">Documentation (CodePlex)</a>
+            <a href="http://nitoasyncex.codeplex.com/discussions" data-role="button">Forum (CodePlex)</a>
+            <a href="http://nitoasyncex.codeplex.com/workitem/list/basic" data-role="button">Issue tracker (CodePlex)</a>
+            <a href="http://nitoasyncex.codeplex.com/SourceControl/BrowseLatest" data-role="button">Browse source code (CodePlex)</a>
+        </div>
+	</div>
+</div>

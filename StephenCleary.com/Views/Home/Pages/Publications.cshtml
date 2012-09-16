@@ -1,0 +1,44 @@
+﻿@using StephenCleary.Helpers;
+
+<div data-role="page" id="publications" data-title="Publications">
+    <div data-role="header" data-theme="d">
+		<a href="#index" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+        <h2>Publications</h2>
+    </div>
+	<div data-role="content">
+        <ul data-role="listview">
+            <li data-role="list-divider">Trade journals</li>
+	        <li><a href="http://msdn.microsoft.com/en-us/magazine/gg598924.aspx">
+                <h2>It's All About the SynchronizationContext</h2>
+                <p class="notruncate">A thorough look at the @Html.CSharp("`SynchronizationContext`") type, starting with some history and concluding with how it is used by various components (including components in development such as the @Html.CSharp("async") / @Html.CSharp("await") compiler support).</p>
+                <p class="ui-li-aside">MSDN Magazine, February 2011</p>
+	        </a></li>
+	        <li><a href="http://www.boost.org/doc/libs/1_43_0/libs/type_traits/doc/html/boost_typetraits/background.html">
+                <h2>C++ Type Traits</h2>
+                <p class="notruncate">A brief description of the Boost.TypeTraits library, which uses advanced templates to determine (and manipulate) type properties at compile-time. This was the first article on template metaprogramming; the Type Traits library provided the groundwork for more advanced template metaprogramming. I co-authored this article with John Maddock.</p>
+                <p class="ui-li-aside">Dr. Dobb's Journal, October 2000</p>
+            </a></li>
+            <li data-role="list-divider">Online</li>
+	        <li><a href="http://nitoprograms.blogspot.com/2012/02/async-and-await.html">
+                <h2>Async and Await</h2>
+                <p class="notruncate">An introduction to @Html.CSharp("async") and @Html.CSharp("await").</p>
+                <p class="ui-li-aside">Blog</p>
+            </a></li>
+	        <li><a href="http://nitoprograms.blogspot.com/2009/04/tcpip-net-sockets-faq.html">
+                <h2>TCP/IP .NET Sockets FAQ</h2>
+                <p class="notruncate">How to use TCP/IP sockets from .NET (correctly). I've gotten a lot of thankful responses on the <i>Message framing</i> and <i>Detection of half-open connections</i> sections in particular.</p>
+                <p class="ui-li-aside">Blog</p>
+            </a></li>
+	        <li><a href="http://nitoprograms.blogspot.com/2009/08/how-to-implement-idisposable-and.html">
+                <h2>Implementing IDisposable and Finalizers</h2>
+                <p class="notruncate">Three simple rules for @Html.CSharp("`IDisposable`") and finalizers. These rules are derived from my background in reliable programming, and are far simpler than the "dispose pattern" officially recommended by Microsoft.</p>
+                <p class="ui-li-aside">Blog</p>
+            </a></li>
+	        <li><a href="http://www.codeproject.com/Articles/29534/IDisposable-What-Your-Mother-Never-Told-You-About">
+                <h2>IDisposable: What Your Mother Never Told You about Resource Deallocation</h2>
+                <p class="notruncate">An early article discussing some of the problems around nondeterministic resource deallocation and @Html.CSharp("`IDisposable`"). I was still quite new to .NET at the time.</p>
+                <p class="ui-li-aside">Code Project</p>
+            </a></li>
+        </ul>
+	</div>
+</div>

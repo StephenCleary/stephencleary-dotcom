@@ -1,0 +1,59 @@
+﻿@using StephenCleary.Helpers;
+
+<div data-role="page" id="libraries_Comparers" data-title="Comparers">
+    <div data-role="header" data-theme="d">
+		<a href="#index" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+        <h2>Comparers</h2>
+    </div>
+    <div>
+        <p>The Comparers library provides a semi-fluent API for defining how objects can be compared. This makes even the most complex comparisons relatively easy.</p>
+@Html.CSharp(@"
+// Use the Comparers library.
+using Comparers;
+
+class `Person`
+{
+  public string FirstName { get; }
+  public string LastName { get; }
+}
+
+class `Test`
+{
+  public static void SortByLastNameThenFirstName(`List`<`Person`> list)
+  {
+    `IComparer`<`Person`> nameComparer = `Compare`<`Person`>.OrderBy(p => p.LastName).ThenBy(p => p.FirstName);
+    list.Sort(nameComparer);
+  }
+}")
+        <p>The Comparers library also provides assistance for defining the default comparison for a type:</p>
+@Html.CSharp(@"
+// Use the Comparers library.
+using Comparers;
+
+class `Person` : `ComparableBase`<`Person`>
+{
+  public string FirstName { get; }
+  public string LastName { get; }
+
+  static Person()
+  {
+    // ComparableBase uses DefaultComparer to correctly implement:
+    //   IComparable<Person>, IEquatable<Person>, IComparable, Object.Equals, Object.GetHashCode.
+    DefaultComparer = `Compare`<`Person`>.OrderBy(p => p.LastName).ThenBy(p => p.FirstName);
+  }
+}")
+    </div>
+	<div data-role="content">
+        <div style="text-align:center">
+            <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=comparers&DownloadId=404414" />
+        </div>
+        <div data-role="controlgroup">
+            <a href="http://comparers.codeplex.com/" data-role="button">Project page (CodePlex)</a>
+            <a href="http://nuget.org/packages/Comparers" data-role="button">NuGet package</a>
+            <a href="http://comparers.codeplex.com/documentation" data-role="button">Documentation (CodePlex)</a>
+            <a href="http://comparers.codeplex.com/discussions" data-role="button">Forum (CodePlex)</a>
+            <a href="http://comparers.codeplex.com/workitem/list/basic" data-role="button">Issue tracker (CodePlex)</a>
+            <a href="http://comparers.codeplex.com/SourceControl/BrowseLatest" data-role="button">Browse source code (CodePlex)</a>
+        </div>
+	</div>
+</div>

@@ -1,0 +1,46 @@
+﻿@using StephenCleary.Helpers;
+
+<div data-role="page" id="libraries_ArraySegments" data-title="ArraySegments">
+    <div data-role="header" data-theme="d">
+		<a href="#index" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+        <h2>ArraySegments</h2>
+    </div>
+	<div data-role="content">
+        <div>
+            <p>The ArraySegments library allows you to easily slice and dice @Html.CSharp("`ArraySegment`<`T`>") instances.</p>
+@Html.CSharp(@"
+// Use the ArraySegments library.
+using ArraySegments;
+
+class `Test`
+{
+  public static void Playground()
+  {
+    byte[] myData = ...;
+    `ArraySegment`<byte> data = myData.AsArraySegment();
+
+    // Take, Skip, TakeLast, SkipLast, and Slice are all available.
+    `ArraySegment`<byte> header = data.Take(1024); // Look ma, no copying!
+
+    // BinaryReader/BinaryWriter/MemoryStreams also provided for convenience.
+    using (var binaryReader = header.CreateBinaryReader())
+    {
+      int littleEndianInt32 = binaryReader.ReadInt32();
+      ...;
+    }
+  }
+}")
+        </div>
+        <div style="text-align:center">
+            <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=arraysegments&DownloadId=483861" />
+        </div>
+        <div data-role="controlgroup">
+            <a href="http://arraysegments.codeplex.com/" data-role="button">Project page (CodePlex)</a>
+            <a href="https://nuget.org/packages/Nito.ArraySegments" data-role="button">NuGet package</a>
+            <a href="http://arraysegments.codeplex.com/documentation" data-role="button">Documentation (CodePlex)</a>
+            <a href="http://arraysegments.codeplex.com/discussions" data-role="button">Forum (CodePlex)</a>
+            <a href="http://arraysegments.codeplex.com/workitem/list/basic" data-role="button">Issue tracker (CodePlex)</a>
+            <a href="http://arraysegments.codeplex.com/SourceControl/BrowseLatest" data-role="button">Browse source code (CodePlex)</a>
+        </div>
+	</div>
+</div>
