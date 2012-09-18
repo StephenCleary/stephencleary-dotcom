@@ -1,0 +1,23 @@
+﻿@using StephenCleary.Helpers;
+
+<div data-role="page" id="applications_GuidDecoder" data-title="GUID Decoder">
+    <div data-role="header" data-theme="d">
+		<a href="#index" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+        <h2>GUID Decoder</h2>
+    </div>
+	<div data-role="content">
+        <div data-role="fieldcontain" class="ui-hide-label">
+	        <label for="applications_GuidDecoder_guidInput">Paste your own GUID here:</label>
+            <input type="text" data-bind="value: guidInput" name="applications_GuidDecoder_guidInput" id="applications_GuidDecoder_guidInput" placeholder="Your own GUID" />
+        </div>
+        <a data-role="button" data-bind="click: decodeGuid">Decode GUID</a>
+        <div data-bind="text: guidDecoderResults"></div>
+        <p>You can create your own GUID by running @Html.CSharp("uuidgen") or @Html.CSharp("uuidgen -x"), or use one of the examples below:</p>
+        <div data-role="controlgroup">
+            <a data-role="button" data-guid="572858EA-36DD-11D2-885F-004033E0078E" data-bind="click: decodeGuid">The GUID used to track down the author of the Melissa virus</a>
+            <a data-role="button" data-guid="AFF081FE-0247-4275-9C4E-021F3DC1DA35" data-bind="click: decodeGuid">The ETW provider for ASP.NET events</a>
+            <a data-role="button" data-guid="4d36e980-e325-11ce-bfc1-08002be10318" data-bind="click: decodeGuid">The Windows device class for floppy disk drives</a>
+            <a data-role="button" data-guid="C12A7328-F81F-11D2-BA4B-00A0C93EC93B" data-bind="click: decodeGuid">The GPT system partition on newer UEFI computers</a>
+        </div>
+	</div>
+</div>

@@ -124,6 +124,14 @@
     <Content Include="Content\images\trythis.128.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\app\ViewModel.js" />
+    <Content Include="Scripts\Bootstrapper.js" />
+    <Content Include="Scripts\lib\jquery.placeholder.js" />
+    <Content Include="Scripts\lib\jquery.placeholder.min.js" />
+    <Content Include="Scripts\lib\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\lib\knockout-2.1.0.js" />
+    <Content Include="Scripts\lib\moment.js" />
+    <Content Include="Scripts\lib\moment.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -140,7 +148,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -168,6 +175,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Pages\Libraries\AsyncEx.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Pages\Applications.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Pages\Applications\GuidDecoder.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -21,6 +21,7 @@ $wc.DownloadFile($url, $destination)
 $target = [System.IO.Path]::Combine($solutionDirectory, "..\\gh-pages")
 Move-Item $destination $target -Force
 Copy-Item ([System.IO.Path]::Combine([System.IO.Path]::Combine($solutionDirectory, "StephenCleary.com"), "Content")) $target -Force -Recurse
+Copy-Item ([System.IO.Path]::Combine([System.IO.Path]::Combine($solutionDirectory, "StephenCleary.com"), "Scripts")) $target -Force -Recurse
 
 # Switch back to the original configuration.
 $origConfig.Activate()
