@@ -1,0 +1,40 @@
+﻿/* C# code in a block */
+pre code.csharp {
+    border: 1px solid black;
+    max-height: 600px;
+    padding: 5px;
+    display: block;
+}
+
+/* C# code that may be block or inline */
+.csharp {
+    font-family: Consolas, monospace;
+    padding: 1px 5px 1px 5px;
+    background-color: #eeeeee;
+    color: black;
+}
+
+/* VS Environment -> Fonts and Colors -> Comment */
+.csharp .comment {
+    color: green;
+}
+
+/* VS Environment -> Fonts and Colors -> Keyword */
+.csharp .keyword {
+    color: blue;
+}
+
+/* VS Environment -> Fonts and Colors -> String */
+.csharp .string {
+    color: #A31515;
+}
+
+/* VS Environment -> Fonts and Colors -> User Types */
+.csharp .type {
+    color: #2B91AF;
+}
+
+/* VS Environment -> Fonts and Colors -> Current Statement */
+.csharp .highlight {
+    background-color: yellow;
+}

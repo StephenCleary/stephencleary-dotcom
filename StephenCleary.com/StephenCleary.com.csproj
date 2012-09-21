@@ -119,6 +119,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\CSharp-Dark.css" />
+    <Content Include="Content\CSharp-Light.css" />
     <Content Include="Content\images\avatar.128.jpg" />
     <Content Include="Content\images\blank.gif" />
     <Content Include="Content\images\trythis.128.jpg" />
