@@ -48,10 +48,38 @@ my.vm = (function () {
             return ret;
         });
 
+    var refreshTextAreas = function () {
+        $('textarea').keyup();
+    };
+
+    var codeInput = ko.observable(''),
+        formatCode = function () {
+            codeFormatterResult('Formatting code...');
+            $.ajax({
+                url: 'http://stephenclearyapi.apphb.com/api/CSharpFormatter',
+                dataType: 'jsonp',
+                cache: true,
+                data: { code: codeInput() },
+                success: function (result) {
+                    codeFormatterResult(result.result);
+                    $('textarea').keyup();
+                },
+                error: function (xhr, status, error) {
+                    codeFormatterResult('An error occurred.');
+                    $('textarea').keyup();
+                }
+            });
+        },
+        codeFormatterResult = ko.observable('');
+    codeFormatterResult.subscribe(refreshTextAreas);
+
     return {
         email: email,
         guidInput: guidInput,
         decodeGuid: decodeGuid,
         guidDecoderResults: guidDecoderResults,
+        codeInput: codeInput,
+        formatCode: formatCode,
+        codeFormatterResult: codeFormatterResult,
     };
 })();

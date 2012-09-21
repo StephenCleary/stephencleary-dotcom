@@ -37,5 +37,9 @@ pre code.csharp {
 /* VS Environment -> Fonts and Colors -> Current Statement */
 .csharp .highlight {
     color: black;
-    background-color: #efc2b0;
+    background-color: #eff284;
+}
+
+.csharp .highlight * {
+    color: black;
 }

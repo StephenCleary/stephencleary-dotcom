@@ -134,6 +134,9 @@
     <Content Include="Scripts\lib\knockout-2.1.0.js" />
     <Content Include="Scripts\lib\moment.js" />
     <Content Include="Scripts\lib\moment.min.js" />
+    <Content Include="Views\Home\Pages\Applications\CodeFormatter.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -38,3 +38,7 @@ pre code.csharp {
 .csharp .highlight {
     background-color: yellow;
 }
+
+.csharp .highlight * {
+    color: black;
+}

@@ -1,0 +1,27 @@
+﻿@using StephenCleary.Helpers;
+
+<div data-role="page" id="applications_CodeFormatter" data-title="C# Code Formatter">
+    <div data-role="header" data-theme="d">
+		<a href="#index" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+        <h2>C# code formatter</h2>
+    </div>
+	<div data-role="content">
+        <div data-role="fieldcontain">
+	        <label for="applications_CodeFormatter_codeInput">Code to format:</label>
+            <textarea data-bind="value: codeInput" name="applications_CodeFormatter_codeInput" id="applications_CodeFormatter_codeInput" placeholder="C# code"></textarea>
+        </div>
+        <a data-role="button" data-bind="click: formatCode">Format C# Code</a>
+        <div data-role="fieldcontain">
+	        <label for="applications_CodeFormatter_result">Formatted code:</label>
+            <textarea data-bind="value: codeFormatterResult" name="applications_CodeFormatter_result" id="applications_CodeFormatter_result" readonly="readonly"></textarea>
+        </div>
+        <div>
+            <p>Preview in light theme (<a href="Content/CSharp-Light.css" rel="external">CSharp-Light.css</a>):</p>
+            <div data-bind="html: codeFormatterResult"></div>
+        </div>
+        <div>
+            <p>Preview in dark theme (<a href="Content/CSharp-Dark.css" rel="external">CSharp-Dark.css</a>):</p>
+            <div data-bind="html: codeFormatterResult" class="dark"></div>
+        </div>
+	</div>
+</div>
