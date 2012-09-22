@@ -11,6 +11,14 @@
             <textarea data-bind="value: codeInput" name="applications_CodeFormatter_codeInput" id="applications_CodeFormatter_codeInput" placeholder="C# code"></textarea>
         </div>
         <a data-role="button" data-bind="click: formatCode">Format C# Code</a>
+        <div data-role="collapsible">
+            <h3>Advanced</h3>
+            <p>The C# code formatter has two "extended commands":</p>
+            <ul>
+                <li>Type names may be surrounded by backtick-dollarsign ("`$"), e.g., "`$Console`$.Write".</li>
+                <li>Highlighting may be turned on and off by backtick-exclamation-point ("`!"), e.g., "only `!some of this`! is important".</li>
+            </ul>
+        </div>
         <div data-role="fieldcontain">
 	        <label for="applications_CodeFormatter_result">Formatted code:</label>
             <textarea data-bind="value: codeFormatterResult" name="applications_CodeFormatter_result" id="applications_CodeFormatter_result" readonly="readonly"></textarea>
