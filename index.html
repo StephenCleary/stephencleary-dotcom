@@ -70,12 +70,10 @@
     </div>
 	<div data-role="content">
         <ul data-role="listview">
-            <!--
 	        <li><a href="#applications_CodeFormatter">
                 <h2>Yet Another C# Code Formatter</h2>
                 <p>Formats C# code as HTML. My formatter accepts a (limited) set of commands, as well.</p>
 	        </a></li>
-                -->
 	        <li><a href="#applications_GuidDecoder">
                 <h2>Guid Decoder</h2>
                 <p>Breaks down any GUID/UUID into its components.</p>
@@ -90,20 +88,31 @@
         <h2>C# code formatter</h2>
     </div>
 	<div data-role="content">
-        <ul data-role="listview">
-	        <li><a href="#applications_CodeFormatter">
-                <h2>Yet Another C# Code Formatter</h2>
-                <p>Formats C# code as HTML. My formatter accepts a (limited) set of commands, as well.</p>
-	        </a></li>
-	        <li><a href="#applications_GuidDecoder">
-                <h2>Guid Decoder</h2>
-                <p>Breaks down any GUID/UUID into its components.</p>
-                <!-- 572858EA-36DD-11D2-885F-004033E0078E http://en.wikipedia.org/wiki/Melissa_(computer_virus) -->
-                <!-- C12A7328-F81F-11D2-BA4B-00A0C93EC93B The value of the GPT system partition on newer UEFI computers http://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface  -->
-                <!-- 4d36e980-e325-11ce-bfc1-08002be10318 Windows device class for floppy disk drives -->
-                <!-- AFF081FE-0247-4275-9C4E-021F3DC1DA35 ETW provider for ASP.NET events -->
-            </a></li>
-        </ul>
+        <div data-role="fieldcontain">
+	        <label for="applications_CodeFormatter_codeInput">Code to format:</label>
+            <textarea data-bind="value: codeInput" name="applications_CodeFormatter_codeInput" id="applications_CodeFormatter_codeInput" placeholder="C# code"></textarea>
+        </div>
+        <a data-role="button" data-bind="click: formatCode">Format C# Code</a>
+        <div data-role="collapsible">
+            <h3>Advanced</h3>
+            <p>The C# code formatter has two "extended commands":</p>
+            <ul>
+                <li>Type names may be surrounded by backtick-dollarsign ("`$"), e.g., "`$Console`$.Write".</li>
+                <li>Highlighting may be turned on and off by backtick-exclamation-point ("`!"), e.g., "only `!some of this`! is important".</li>
+            </ul>
+        </div>
+        <div data-role="fieldcontain">
+	        <label for="applications_CodeFormatter_result">Formatted code:</label>
+            <textarea data-bind="value: codeFormatterResult" name="applications_CodeFormatter_result" id="applications_CodeFormatter_result" readonly="readonly"></textarea>
+        </div>
+        <div>
+            <p>Preview in light theme (<a href="Content/CSharp-Light.css" rel="external">CSharp-Light.css</a>):</p>
+            <div data-bind="html: codeFormatterResult"></div>
+        </div>
+        <div>
+            <p>Preview in dark theme (<a href="Content/CSharp-Dark.css" rel="external">CSharp-Dark.css</a>):</p>
+            <div data-bind="html: codeFormatterResult" class="dark"></div>
+        </div>
 	</div>
 </div>
 
