@@ -8,37 +8,37 @@
 	<div data-role="content">
         <div>
             <p>This is a "fill in the gaps" sort of library for working with @Html.CSharp("async") and @Html.CSharp("await"). This library contains a large number of small utility classes.</p>
-            <p>One type is @Html.CSharp("`AsyncLazy`<`T`>"), which provides asynchronous lazy initialization. It executes the asynchronous initialization when it is awaited, and ensures that the initialization is only performed once.</p>
+            <p>One type is @Html.CSharp("`$AsyncLazy`$<`$T`$>"), which provides asynchronous lazy initialization. It executes the asynchronous initialization when it is awaited, and ensures that the initialization is only performed once.</p>
 @Html.CSharp(@"
 // Use the AsyncEx library.
 using Nito.AsyncEx;
 
-class `Test`
+class `$Test`$
 {
-  private static readonly `AsyncLazy`<`MyResource`> resource =
-      new `AsyncLazy`(async () =>
+  private static readonly `$AsyncLazy`$<`$MyResource`$> resource =
+      new `$AsyncLazy`$(async () =>
       {
-        var ret = new `MyResource`();
+        var ret = new `$MyResource`$();
         await ret.InitializeAsync();
         return ret;
       });
 
-  public static async `Task` MethodWhichUsesResourceAsync()
+  public static async `$Task`$ MethodWhichUsesResourceAsync()
   {
-    `MyResource` myResource = await resource;
+    `$MyResource`$ myResource = await resource;
     ...;
   }
 }")
-            <p>Another useful type is @Html.CSharp("`AsyncLock`"), an asynchronous lock. Asynchronous methods may use the lock for synchronization without blocking (that is, the <i>method</i> is blocked, but the <i>thread</i> is not):</p>
+            <p>Another useful type is @Html.CSharp("`$AsyncLock`$"), an asynchronous lock. Asynchronous methods may use the lock for synchronization without blocking (that is, the <i>method</i> is blocked, but the <i>thread</i> is not):</p>
 @Html.CSharp(@"
 // Use the AsyncEx library.
 using Nito.AsyncEx;
 
-class `Test`
+class `$Test`$
 {
-  private readonly `AsyncLock` sync = new `AsyncLock`();
+  private readonly `$AsyncLock`$ sync = new `$AsyncLock`$();
 
-  public async `Task` AccessSharedStateAsync()
+  public async `$Task`$ AccessSharedStateAsync()
   {
     using (await sync.LockAsync())
     {

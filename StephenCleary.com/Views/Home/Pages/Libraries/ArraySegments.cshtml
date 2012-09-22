@@ -7,20 +7,20 @@
     </div>
 	<div data-role="content">
         <div>
-            <p>The ArraySegments library allows you to easily slice and dice @Html.CSharp("`ArraySegment`<`T`>") instances.</p>
+            <p>The ArraySegments library allows you to easily slice and dice @Html.CSharp("`$ArraySegment`$<`$T`$>") instances.</p>
 @Html.CSharp(@"
 // Use the ArraySegments library.
 using ArraySegments;
 
-class `Test`
+class `$Test`$
 {
   public static void Playground()
   {
     byte[] myData = ...;
-    `ArraySegment`<byte> data = myData.AsArraySegment();
+    `$ArraySegment`$<byte> data = myData.AsArraySegment();
 
     // Take, Skip, TakeLast, SkipLast, and Slice are all available.
-    `ArraySegment`<byte> header = data.Take(1024); // Look ma, no copying!
+    `$ArraySegment`$<byte> header = data.Take(1024); // Look ma, no copying!
 
     // BinaryReader/BinaryWriter/MemoryStreams also provided for convenience.
     using (var binaryReader = header.CreateBinaryReader())

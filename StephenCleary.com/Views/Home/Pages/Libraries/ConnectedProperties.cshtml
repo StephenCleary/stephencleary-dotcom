@@ -14,14 +14,14 @@
 using Nito.ConnectedProperties;
 using Nito.ConnectedProperties.Named;
 
-class `Program`
+class `$Program`$
 {
   // Display the Name of any object passed into this method.
   public static void DisplayName(object obj)
   {
     // Look up a connected property called ""Name"".
     `!var nameProperty = obj.GetConnectedProperty(""Name"");`!
-    `Console`.WriteLine(""Name: "" + `!nameProperty.Get()`!);
+    `$Console`$.WriteLine(""Name: "" + `!nameProperty.Get()`!);
   }
 
   static void Main()
