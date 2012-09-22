@@ -102,7 +102,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Api\Api\Business\CSharpFormatter.cs">
+    <Compile Include="..\..\api\Api\Business\CSharpFormatter.cs">
       <Link>Helpers\CSharpFormatter.cs</Link>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
