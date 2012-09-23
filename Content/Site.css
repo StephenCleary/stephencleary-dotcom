@@ -35,6 +35,7 @@
 pre code.csharp {
     border: 1px solid black;
     max-height: 600px;
+    overflow: scroll;
     padding: 5px;
     display: block;
 }
@@ -75,6 +76,7 @@ pre code.csharp {
 .dark pre code.csharp {
     border: 1px solid white;
     max-height: 600px;
+    overflow: scroll;
     padding: 5px;
     display: block;
 }
