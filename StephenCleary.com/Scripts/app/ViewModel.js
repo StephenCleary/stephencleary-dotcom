@@ -63,6 +63,7 @@ my.vm = (function () {
                 success: function (result) {
                     codeFormatterResult(result.result);
                     $('textarea').keyup();
+                    $('#applications_CodeFormatter_result').select();
                 },
                 error: function (xhr, status, error) {
                     codeFormatterResult('An error occurred.');
