@@ -2,7 +2,7 @@
 pre code.csharp {
     border: 1px solid white;
     max-height: 600px;
-    overflow: scroll;
+    overflow-y: scroll;
     padding: 5px;
     display: block;
 }
