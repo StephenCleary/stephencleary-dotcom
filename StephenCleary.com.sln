@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CF6977
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFormatter", "CodeFormatter\CodeFormatter.csproj", "{CBF2EC50-E836-4D50-B7F0-E4FA1AE94EE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{207D4A26-A1EB-47A8-8188-BA73FE6B6E8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{207D4A26-A1EB-47A8-8188-BA73FE6B6E8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{207D4A26-A1EB-47A8-8188-BA73FE6B6E8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBF2EC50-E836-4D50-B7F0-E4FA1AE94EE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBF2EC50-E836-4D50-B7F0-E4FA1AE94EE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBF2EC50-E836-4D50-B7F0-E4FA1AE94EE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBF2EC50-E836-4D50-B7F0-E4FA1AE94EE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
