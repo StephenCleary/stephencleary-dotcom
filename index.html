@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -57,6 +57,7 @@
         <div data-role="controlgroup">
             <a href="http://stackoverflow.com/users/263693/stephen-cleary" data-role="button">Stack Overflow</a>
             <a href="http://social.msdn.microsoft.com/Forums/en-US/user/threads?user=Stephen%20Cleary" data-role="button">MSDN Forums</a>
+            <a href="https://github.com/StephenCleary" data-role="button">GitHub</a>
             <a href="http://www.codeplex.com/site/users/view/StephenCleary" data-role="button">CodePlex</a>
             <a href="https://twitter.com/aSteveCleary" data-role="button">Twitter</a>
         </div>
@@ -140,33 +141,55 @@
 
 <div data-role="page" id="libraries" data-title="Libraries">
     <div data-role="header" data-theme="d">
-		<a href="#index" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+        <a href="#index" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
         <h2>Open-source libraries and projects</h2>
     </div>
-	<div data-role="content">
+    <div data-role="content">
         <ul data-role="listview">
-	        <li><a href="#libraries_ConnectedProperties">
-                <h2>Connected Properties</h2>
-                <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=connectedproperties&DownloadId=483866" />
-                <p>Dynamically add properties to (almost) any object instance.</p>
-	        </a></li>
-	        <li><a href="#libraries_AsyncEx">
-                <h2>AsyncEx</h2>
-                <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=nitoasyncex&DownloadId=483868" />
-                <p>Helper types for developing with <code class="csharp"><span class="keyword">async</span></code> and <code class="csharp"><span class="keyword">await</span></code>.</p>
-            </a></li>
-	        <li><a href="#libraries_Comparers">
-                <h2>Comparers</h2>
-                <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=comparers&DownloadId=404414" />
-                <p>The last comparison library you'll ever need!</p>
-            </a></li>
-	        <li><a href="#libraries_ArraySegments">
-                <h2>ArraySegments</h2>
-                <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=arraysegments&DownloadId=483861" />
-                <p>A library for slicing and dicing arrays (without copying).</p>
-            </a></li>
+            <li>
+                <a href="#libraries_ConnectedProperties">
+                    <h2>Connected Properties</h2>
+                    <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=connectedproperties&DownloadId=483866" />
+                    <p>Dynamically add properties to (almost) any object instance.</p>
+                </a>
+            </li>
+            <li>
+                <a href="#libraries_AsyncEx">
+                    <h2>AsyncEx</h2>
+                    <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=nitoasyncex&DownloadId=483868" />
+                    <p>Helper types for developing with <code class="csharp"><span class="keyword">async</span></code> and <code class="csharp"><span class="keyword">await</span></code>.</p>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/StephenCleary/AsyncDiagnostics">
+                    <h2>Async Diagnostics</h2>
+                    <img src="Content/images/blank.gif" width="128" height="128" data-src="https://raw.github.com/StephenCleary/AsyncDiagnostics/master/icon.png" />
+                    <p>Easy-to-use exception causality chains for <code class="csharp"><span class="keyword">async</span></code> and <code class="csharp"><span class="keyword">await</span></code>.</p>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/StephenCleary/AspNetBackgroundTasks">
+                    <h2>ASP.NET Background Tasks</h2>
+                    <img src="Content/images/blank.gif" width="128" height="128" />
+                    <p>A component that registers "fire and forget" tasks with the ASP.NET runtime.</p>
+                </a>
+            </li>
+            <li>
+                <a href="#libraries_Comparers">
+                    <h2>Comparers</h2>
+                    <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=comparers&DownloadId=404414" />
+                    <p>The last comparison library you'll ever need!</p>
+                </a>
+            </li>
+            <li>
+                <a href="#libraries_ArraySegments">
+                    <h2>ArraySegments</h2>
+                    <img src="Content/images/blank.gif" width="128" height="128" data-src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=arraysegments&DownloadId=483861" />
+                    <p>A library for slicing and dicing arrays (without copying).</p>
+                </a>
+            </li>
         </ul>
-	</div>
+    </div>
 </div>
 
 <div data-role="page" id="libraries_ArraySegments" data-title="ArraySegments">
@@ -388,50 +411,78 @@
 
 <div data-role="page" id="publications" data-title="Publications">
     <div data-role="header" data-theme="d">
-		<a href="#index" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+        <a href="#index" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
         <h2>Publications</h2>
     </div>
-	<div data-role="content">
+    <div data-role="content">
         <ul data-role="listview">
             <li data-role="list-divider">Trade journals</li>
-	        <li><a href="http://msdn.microsoft.com/en-us/magazine/jj991977.aspx">
-                <h2>Best Practices in Asynchronous Programming</h2>
-                <p class="notruncate">A "second step" for learning <code class="csharp"><span class="keyword">async</span></code>, providing guidelines to avoid common pitfalls. Includes several cheat sheets and resources for <code class="csharp"><span class="keyword">async</span></code> development.</p>
-                <p class="ui-li-aside">MSDN Magazine, March 2013</p>
-	        </a></li>
-	        <li><a href="http://msdn.microsoft.com/en-us/magazine/gg598924.aspx">
-                <h2>It's All About the SynchronizationContext</h2>
-                <p class="notruncate">A thorough look at the <code class="csharp"><span class="type">SynchronizationContext</span></code> type, starting with some history and concluding with how it is used by various components (including components in development such as the <code class="csharp"><span class="keyword">async</span></code> / <code class="csharp"><span class="keyword">await</span></code> compiler support).</p>
-                <p class="ui-li-aside">MSDN Magazine, February 2011</p>
-	        </a></li>
-	        <li><a href="http://www.boost.org/doc/libs/1_43_0/libs/type_traits/doc/html/boost_typetraits/background.html">
-                <h2>C++ Type Traits</h2>
-                <p class="notruncate">A brief description of the Boost.TypeTraits library, which uses advanced templates to determine (and manipulate) type properties at compile-time. This was the first article on template metaprogramming; the Type Traits library provided the groundwork for more advanced template metaprogramming. I co-authored this article with John Maddock.</p>
-                <p class="ui-li-aside">Dr. Dobb's Journal, October 2000</p>
-            </a></li>
+            <li>
+                <a href="http://msdn.microsoft.com/en-us/magazine/dn630647.aspx">
+                    <h2>Patterns for Asynchronous MVVM Applications: Commands</h2>
+                    <p class="notruncate">The second in a series on dealing with <code class="csharp"><span class="keyword">async</span></code> and <code class="csharp"><span class="keyword">await</span></code> for Model-View-ViewModel applications. Examines several patterns for representing asynchronous operations as MVVM commands (<code class="csharp">ICommand</code>).</p>
+                    <p class="ui-li-aside">MSDN Magazine, April 2014</p>
+                </a>
+            </li>
+            <li>
+                <a href="http://msdn.microsoft.com/en-us/magazine/dn605875.aspx">
+                    <h2>Patterns for Asynchronous MVVM Applications: Data Binding</h2>
+                    <p class="notruncate">The first in a series on dealing with <code class="csharp"><span class="keyword">async</span></code> and <code class="csharp"><span class="keyword">await</span></code> for Model-View-ViewModel applications. Introduces a pattern for data-binding to the results of asynchronous operations.</p>
+                    <p class="ui-li-aside">MSDN Magazine, March 2014</p>
+                </a>
+            </li>
+            <li>
+                <a href="http://msdn.microsoft.com/en-us/magazine/jj991977.aspx">
+                    <h2>Best Practices in Asynchronous Programming</h2>
+                    <p class="notruncate">A "second step" for learning <code class="csharp"><span class="keyword">async</span></code>, providing guidelines to avoid common pitfalls. Includes several cheat sheets and resources for <code class="csharp"><span class="keyword">async</span></code> development.</p>
+                    <p class="ui-li-aside">MSDN Magazine, March 2013</p>
+                </a>
+            </li>
+            <li>
+                <a href="http://msdn.microsoft.com/en-us/magazine/gg598924.aspx">
+                    <h2>It's All About the SynchronizationContext</h2>
+                    <p class="notruncate">A thorough look at the <code class="csharp"><span class="type">SynchronizationContext</span></code> type, starting with some history and concluding with how it is used by various components (including components in development such as the <code class="csharp"><span class="keyword">async</span></code> / <code class="csharp"><span class="keyword">await</span></code> compiler support).</p>
+                    <p class="ui-li-aside">MSDN Magazine, February 2011</p>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.boost.org/doc/libs/1_43_0/libs/type_traits/doc/html/boost_typetraits/background.html">
+                    <h2>C++ Type Traits</h2>
+                    <p class="notruncate">A brief description of the Boost.TypeTraits library, which uses advanced templates to determine (and manipulate) type properties at compile-time. This was the first article on template metaprogramming; the Type Traits library provided the groundwork for more advanced template metaprogramming. I co-authored this article with John Maddock.</p>
+                    <p class="ui-li-aside">Dr. Dobb's Journal, October 2000</p>
+                </a>
+            </li>
             <li data-role="list-divider">Online</li>
-	        <li><a href="http://blog.stephencleary.com/2012/02/async-and-await.html">
-                <h2>Async and Await</h2>
-                <p class="notruncate">An introduction to <code class="csharp"><span class="keyword">async</span></code> and <code class="csharp"><span class="keyword">await</span></code>.</p>
-                <p class="ui-li-aside">Blog</p>
-            </a></li>
-	        <li><a href="http://blog.stephencleary.com/2009/04/tcpip-net-sockets-faq.html">
-                <h2>TCP/IP .NET Sockets FAQ</h2>
-                <p class="notruncate">How to use TCP/IP sockets from .NET (correctly). I've gotten a lot of thankful responses on the <i>Message framing</i> and <i>Detection of half-open connections</i> sections in particular.</p>
-                <p class="ui-li-aside">Blog</p>
-            </a></li>
-	        <li><a href="http://blog.stephencleary.com/2009/08/how-to-implement-idisposable-and.html">
-                <h2>Implementing IDisposable and Finalizers</h2>
-                <p class="notruncate">Three simple rules for <code class="csharp"><span class="type">IDisposable</span></code> and finalizers. These rules are derived from my background in reliable programming, and are far simpler than the "dispose pattern" officially recommended by Microsoft.</p>
-                <p class="ui-li-aside">Blog</p>
-            </a></li>
-	        <li><a href="http://www.codeproject.com/Articles/29534/IDisposable-What-Your-Mother-Never-Told-You-About">
-                <h2>IDisposable: What Your Mother Never Told You about Resource Deallocation</h2>
-                <p class="notruncate">An early article discussing some of the problems around nondeterministic resource deallocation and <code class="csharp"><span class="type">IDisposable</span></code>. I was still quite new to .NET at the time.</p>
-                <p class="ui-li-aside">Code Project</p>
-            </a></li>
+            <li>
+                <a href="http://blog.stephencleary.com/2012/02/async-and-await.html">
+                    <h2>Async and Await</h2>
+                    <p class="notruncate">An introduction to <code class="csharp"><span class="keyword">async</span></code> and <code class="csharp"><span class="keyword">await</span></code>.</p>
+                    <p class="ui-li-aside">Blog</p>
+                </a>
+            </li>
+            <li>
+                <a href="http://blog.stephencleary.com/2009/04/tcpip-net-sockets-faq.html">
+                    <h2>TCP/IP .NET Sockets FAQ</h2>
+                    <p class="notruncate">How to use TCP/IP sockets from .NET (correctly). I've gotten a lot of thankful responses on the <i>Message framing</i> and <i>Detection of half-open connections</i> sections in particular.</p>
+                    <p class="ui-li-aside">Blog</p>
+                </a>
+            </li>
+            <li>
+                <a href="http://blog.stephencleary.com/2009/08/how-to-implement-idisposable-and.html">
+                    <h2>Implementing IDisposable and Finalizers</h2>
+                    <p class="notruncate">Three simple rules for <code class="csharp"><span class="type">IDisposable</span></code> and finalizers. These rules are derived from my background in reliable programming, and are far simpler than the "dispose pattern" officially recommended by Microsoft.</p>
+                    <p class="ui-li-aside">Blog</p>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.codeproject.com/Articles/29534/IDisposable-What-Your-Mother-Never-Told-You-About">
+                    <h2>IDisposable: What Your Mother Never Told You about Resource Deallocation</h2>
+                    <p class="notruncate">An early article discussing some of the problems around nondeterministic resource deallocation and <code class="csharp"><span class="type">IDisposable</span></code>. I was still quite new to .NET at the time.</p>
+                    <p class="ui-li-aside">Code Project</p>
+                </a>
+            </li>
         </ul>
-	</div>
+    </div>
 </div>
 
 
@@ -455,5 +506,13 @@ $(document).bind("mobileinit", function () {
     <script src="Scripts/lib/jquery.placeholder.min.js"></script>
     <script src="Scripts/app/ViewModel.js"></script>
     <script src="Scripts/Bootstrapper.js"></script>
+
+<!-- Visual Studio Browser Link -->
+<script type="application/json" id="__browserLink_initializationData">
+    {"appName":"Unknown","requestId":"82c3a9346f934ace9ef0090591b4127b"}
+</script>
+<script type="text/javascript" src="http://localhost:13554/a72cece9ff114e48b594a39fbde60070/browserLink" async="async"></script>
+<!-- End Browser Link -->
+
 </body>
 </html>
