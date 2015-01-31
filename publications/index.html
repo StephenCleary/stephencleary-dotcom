@@ -91,6 +91,13 @@ div .vertical-margins {
     height: auto !important;
 }
 
+/* Fixes for Amazon widget in Bootstrap page */
+.amzn_wdgt * {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
 /* Post styles */
 /* ----------------------------------------------------------*/
 
@@ -158,6 +165,7 @@ code {
 .highlight .s1 { color: #a31515 } /* Literal.String.Single */
 .highlight .ss { color: #a31515 } /* Literal.String.Symbol */
 </style>
+    
     <meta name="application-name" content="Stephen Cleary" />
     <link rel="apple-touch-icon" sizes="57x57" href="http://stephencleary.com/icons/apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="114x114" href="http://stephencleary.com/icons/apple-touch-icon-114x114.png">
@@ -193,6 +201,7 @@ code {
             <li  ><a href="http://blog.stephencleary.com">Blog</a></li>
             <li  ><a href="http://stephencleary.com/projects/">Projects</a></li>
             <li  class="active"  ><a href="http://stephencleary.com/publications/">Publications</a></li>
+            <li  ><a href="http://stephencleary.com/book/">Book</a></li>
             <li  ><a href="http://stephencleary.com/contact/">Contact</a></li>
             <li><a href="http://feeds.feedburner.com/NitoPrograms"><i class="fa fa-rss-square fa-lg"></i></a></li>
             <li  ><a href="http://stephencleary.com/search/"><i class="fa fa-search"></i></a></li>
@@ -207,7 +216,7 @@ code {
     <div class="list-group">
         <a href="http://msdn.microsoft.com/en-us/magazine/dn818493.aspx" class="list-group-item clearfix"><h2 class="pull-right"><small>MSDN Magazine, November 2014</small></h2><h2>Unit Testing Asynchronous Code</h2><p>An exhaustive look at unit testing <code>async</code> methods. This article covers the basics of unit testing <code>async</code> methods, mocking techniques, and special considerations. Also includes an overview of the current status of common unit testing frameworks (MSTest, xUnit, and NUnit) as well as some helper libraries (e.g., Moq, Microsoft Fakes), with a look at future directions.</p></a>
         <a href="http://msdn.microsoft.com/en-us/magazine/dn802603.aspx" class="list-group-item clearfix"><h2 class="pull-right"><small>MSDN Magazine, October 2014</small></h2><h2>Introduction to async/await on ASP.NET</h2><p>Most <code>async</code> tutorials assume a client-side application. But does <code>async</code> have a role to play on the server? The answer is most definitely "yes!" This article examines <code>async</code> on ASP.NET applications: the benefits of <code>async</code>, how it works in an ASP.NET environment, and common pitfalls to avoid.</p></a>
-        <a href="http://tinyurl.com/ConcurrencyCookbook" class="list-group-item clearfix"><h2 class="pull-right"><small>O'Reilly, May, 2014</small></h2><h2>Concurrency in C# Cookbook: Asynchronous, Parallel, and Multithreaded Programming</h2><p>An introduction to asynchronous, parallel, reactive, and dataflow programming; and a reference for common solutions.</p></a>
+        <a href="http://stephencleary.com/book/" class="list-group-item clearfix"><h2 class="pull-right"><small>O'Reilly, May, 2014</small></h2><h2>Concurrency in C# Cookbook: Asynchronous, Parallel, and Multithreaded Programming</h2><p>An introduction to asynchronous, parallel, reactive, and dataflow programming; and a reference for common solutions.</p></a>
         <a href="http://msdn.microsoft.com/en-us/magazine/dn683795.aspx" class="list-group-item clearfix"><h2 class="pull-right"><small>MSDN Magazine, May 2014</small></h2><h2>Patterns for Asynchronous MVVM Applications: Services</h2><p>The third in a series on dealing with <code>async</code> and <code>await</code> in Model-View-ViewModel applications. Considers common patterns for asynchronous services: how <code>async</code> interacts with inheritance, factories, unit testing, lazy initialization, and construction.</p></a>
         <a href="http://msdn.microsoft.com/en-us/magazine/dn630647.aspx" class="list-group-item clearfix"><h2 class="pull-right"><small>MSDN Magazine, April 2014</small></h2><h2>Patterns for Asynchronous MVVM Applications: Commands</h2><p>The second in a series on dealing with <code>async</code> and <code>await</code> in Model-View-ViewModel applications. Examines several patterns for representing asynchronous operations as MVVM commands (<code>ICommand</code>).</p></a>
         <a href="http://msdn.microsoft.com/en-us/magazine/dn605875.aspx" class="list-group-item clearfix"><h2 class="pull-right"><small>MSDN Magazine, March 2014</small></h2><h2>Patterns for Asynchronous MVVM Applications: Data Binding</h2><p>The first in a series on dealing with <code>async</code> and <code>await</code> in Model-View-ViewModel applications. Introduces a pattern for data-binding to the results of asynchronous operations.</p></a>
@@ -237,7 +246,7 @@ code {
             <div class="panel panel-primary">
                 <div class="panel-heading">My book</div>
                 <div class="panel-body center">
-                    <div><a href="http://tinyurl.com/ConcurrencyCookbook"><img src="http://stephencleary.com/www.assets/Book-small.jpg"/></a></div>
+                    <div><a href="http://stephencleary.com/book/"><img src="http://stephencleary.com/www.assets/Book-small.jpg"/></a></div>
                     <div>Available from <a href="http://tinyurl.com/ConcurrencyCookbook">O'Reilly</a> or <a href="http://tinyurl.com/ConcurrencyCookbookAmazon">Amazon</a>.</div>
                 </div>
             </div>
@@ -323,6 +332,9 @@ code {
         });
     })(window.jQuery);
 </script>
+
+
+
 
 </body>
 </html>
